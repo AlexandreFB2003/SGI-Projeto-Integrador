@@ -30,7 +30,7 @@ body, html {
 }
 
 .bi-person-circle {
-    margin-left: 3100%;
+    margin-left: 1%;
     
 }
 
@@ -47,11 +47,12 @@ body, html {
 .sidebar-header {
     padding: 10px;
     text-align: center;
-    background-color: #2980b9;
+    background-color: black;
     height: 50px;
-    font-size: 150%;
-}
+    font-size: 130%;
 
+
+}
 
 .sidebar-content a {
     display: block;
@@ -59,20 +60,16 @@ body, html {
     color: white;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    
 }
 
 .sidebar-content a:hover, .sidebar-content a.active {
     background-color: #2980b9;
 }
 
-a{
-    font-size: 130%;
-}
 
 
 .main-content {
-    margin-top: 12%;
+    margin-left: 11%;
     padding: 20px;
 }
 
@@ -119,13 +116,14 @@ footer {
 
     .sidebar-content a {
         padding: 8px; /* Reduz o preenchimento dos itens de matéria */
-        font-size: 1000%; /* Reduz o tamanho da fonte dos itens de matéria */
+        font-size: 100%; /* Reduz o tamanho da fonte dos itens de matéria */
     
     }
 
     .main-content {
         margin-left: 28%;
         padding: 20px;
+        width: 100%;
 
     }
 
@@ -133,35 +131,3 @@ footer {
         height: 7%;
     }
 }
-
-
-  @media (max-width: 1024px){
-    body {
-        overflow-x: auto; /* Habilita a rolagem horizontal para dispositivos móveis */
-    }
-    
-    .sidebar {
-      width: 20%; /* Defina a largura desejada para dispositivos móveis */
-      height: 100%;
-    }
-  
-    .sidebar-header {
-      font-size: 16px; /* Reduz o tamanho da fonte do cabeçalho */
-      padding: 8px; 
-       
-    }
-  
-    .sidebar-content a {
-      padding: 8px; /* Reduz o preenchimento dos itens de matéria */
-      font-size: 14px; /* Reduz o tamanho da fonte dos itens de matéria */
-    }
-
-    .main-content {
-        margin-left: 20%;
-        padding: 20px;
-    }
-
-    footer{
-        height: 7%;
-    }
-  }
