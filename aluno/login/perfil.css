@@ -28,15 +28,31 @@ body, html {
 }
 
 .titulo{
-    margin-top: 7%;
+    margin-top: 8%;
     margin-left: 3%;
     width: 100%;
 }
 
 .formulario {
-    margin-left: 5%;
-    width: 90%;
+    margin-left: 27%;
+    width: 50%;
+    margin-top: 1%;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+    background-color: #87cefa;
+    border-radius: 3%;
+    height: 435%;
+
 }
+
+
+.row{
+    width: 100%;
+    margin-left: 1000%;
+    margin-top: 20%;
+    padding: 7%;
+    height: 100%;
+}
+
 
 .form-group {
     padding: 1em;
@@ -46,6 +62,8 @@ body, html {
     margin-top: 2em;
     width: 70%;
 }
+
+
 
 
 
@@ -64,11 +82,20 @@ footer {
 
 /* Media query para telas menores, como smartphones */
 @media (max-width: 768px) {
+    .bi-person-circle{
+        margin-left: 800%;
+    }
+
+    #menu{
+        margin-right: -900%;
+    }
+
     .titulo{
         margin-top: 30%;
     }
     .formulario {
         width: 95%;
+        height: 800%;
         margin-left: auto;
         margin-right: auto;
         text-align: left;
@@ -76,8 +103,9 @@ footer {
 
     .btn.btn-primary {
         width: 100%;
-        margin-left: 0;
+        margin-top: 17%;
     }
+    
 }
 
 
