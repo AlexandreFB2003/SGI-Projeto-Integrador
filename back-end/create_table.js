@@ -160,10 +160,46 @@ FOREIGN KEY (matricula_aluno)
 REFERENCES tb_aluno (matricula_aluno);
 
 ` 
+	
+
+sql`
+
+ALTER TABLE tb_aluno
+ADD COLUMN data_nascimento DATE;
+
+
+` 
     
     
-    
-    
+sql`
+
+ALTER TABLE tb_aluno 
+ALTER COLUMN matricula_aluno TYPE BIGINT;
+
+
+
+`   
+	
+	
+sql`
+
+ALTER TABLE tb_aluno 
+ALTER COLUMN telefone TYPE BIGINT;
+
+
+
+`
+
+	
+	
+sql`
+
+ALTER TABLE tb_aluno 
+ALTER COLUMN cpf TYPE BIGINT;
+
+
+
+`
     
     
     
