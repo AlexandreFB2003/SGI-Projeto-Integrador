@@ -1,7 +1,9 @@
-export interface IProfessor {
-
+export interface Professor {
     nome: string
-    cpf: string
+    codigo: string
     senha: string
-    
+    cpf: number
+    telefone: string
+    email: string
+    dt_nascimento: string
 }

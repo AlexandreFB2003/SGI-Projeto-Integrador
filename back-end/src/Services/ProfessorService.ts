@@ -1,31 +1,65 @@
-import { IProfessor } from "../Models/Professor"
-import ProfessorRepository from "../Repositories/professorRepository"
+import { Professor } from "../Models/Professor"
+import ProfessorRepository from "../Repositories/In-Memory/ProfessorRepository"
 
-const professorRepository = new ProfessorRepository() 
+const professorRepository = new ProfessorRepository()
 
 class ProfessorService {
 
-    constructor() {
-
-    }
-
-    add(data: IProfessor): IProfessor {
-        // FAZER REGRAS DE NEGOCIO
-
-        // verificar se o professor já existe (pedir informação para o repository)
-        // se ja existir, enviar uma mensagem de erro
-        // se nao existir, pedir para o repository (que tem acesso ao BD) inserir o professor
-        return professorRepository.add(data)
+    constructor(){
         
     }
 
-    update(id: string, data: IProfessor): IProfessor {
-        //FAZER REGRA DE NEGÓCIO
+    get() {
 
-        //verificar se professor existe (repository)
-        //se existe retornar erro
-        //se não existe fazer alteração (repository)
-        return professorRepository.update(id, data)
+        const result = professorRepository.get()
+
+        const professores: Professor[] = []
+
+        result.map((obj) => {
+
+            professores.push(obj)
+
+        })
+
+        return professores
+
+    }
+
+    getIndexById(cd_professor: string): number | null {
+
+        const result = professorRepository.get()
+
+        let position: number | null = null
+
+        result.map((obj, index) => {
+
+            if (obj.codigo === cd_professor) {
+
+                position = index
+
+            }
+
+        })
+
+        return position
+
+    }
+
+    add(data: Professor): Professor {
+
+        return professorRepository.add(data)
+
+    }
+
+    update(data: Professor, cd_professor: string) {
+
+        const position = this.getIndexById(cd_professor)
+
+        if (position !== null) {
+            return professorRepository.update(data, position)
+        } else {
+            return {}
+        }
 
     }
 

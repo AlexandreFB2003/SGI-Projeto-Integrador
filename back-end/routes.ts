@@ -1,21 +1,14 @@
-import Router from "express";
+
+
+import { Router } from "express";
 import ProfessorController from "./src/Controllers/ProfessorController";
-import AlunosController from "./src/Controllers/AlunosController";
+
+const professorController = new ProfessorController()
 
 const router = Router()
-const professorController = new ProfessorController()
-const alunosController = new AlunosController()
 
-router.get("/", )
-
+router.get("/professor", professorController.get)
 router.post("/professor", professorController.add)
-router.put("/professor/:id", professorController.update)
-
-router.get("/alunos", alunosController.getAll)
-router.get("/alunos/:id", alunosController.getByID)
-router.post("/alunos", alunosController.add)
-router.put("/alunos/:id", alunosController.update)
-router.delete("/alunos/:id", alunosController.delete)
-
+router.put("/professor/:id_professor", professorController.update)
 
 export default router
