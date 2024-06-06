@@ -1,65 +1,39 @@
 import { Professor } from "../Models/Professor"
-import ProfessorRepository from "../Repositories/In-Memory/ProfessorRepository"
 
-const professorRepository = new ProfessorRepository()
+import InMemoryProfessorRepository from "../Repositories/In-Memory/InMemoryProfessorRepository"
+import PrismaProfessorRepository from "../Repositories/prisma/PrismaProfessorRepository"
 
 class ProfessorService {
 
-    constructor(){
+    constructor(private _professorRepository: InMemoryProfessorRepository | PrismaProfessorRepository){
         
     }
 
-    get() {
+    async getAll() {
 
-        const result = professorRepository.get()
-
-        const professores: Professor[] = []
-
-        result.map((obj) => {
-
-            professores.push(obj)
-
-        })
-
-        return professores
+        const professorData = await this._professorRepository.getAll()
+        return { data: professorData }
 
     }
 
-    getIndexById(cd_professor: string): number | null {
+    async create(data: Professor): Promise<{ data: Professor }>{
 
-        const result = professorRepository.get()
+        const professorData = await this._professorRepository.getByEmail(data.email)
 
-        let position: number | null = null
-
-        result.map((obj, index) => {
-
-            if (obj.codigo === cd_professor) {
-
-                position = index
-
-            }
-
-        })
-
-        return position
-
-    }
-
-    add(data: Professor): Professor {
-
-        return professorRepository.add(data)
-
-    }
-
-    update(data: Professor, cd_professor: string) {
-
-        const position = this.getIndexById(cd_professor)
-
-        if (position !== null) {
-            return professorRepository.update(data, position)
-        } else {
-            return {}
+        if (professorData) {
+            throw new Error("Já existe um usuário com este email")
         }
+
+        const addProfessorData = await this._professorRepository.create(data)
+
+        return { data: addProfessorData }
+
+    }
+
+    async update(id_professor: string, data: Professor): Promise<Professor> {
+
+        const updatedProfessor = await this._professorRepository.update(id_professor, data)
+        return updatedProfessor
 
     }
 

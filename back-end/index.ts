@@ -1,7 +1,9 @@
 import express from 'express'
-import router from './routes'
+import router from './src/routes'
 
 const server = express()
+
+server.use(express.json())
 
 server.use(express.urlencoded({extended: true}))
 

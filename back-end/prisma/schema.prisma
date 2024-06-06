@@ -9,10 +9,10 @@ datasource db {
 
 
 model Professor {
-  nome String @id
-  codigo String
+  nome String 
+  codigo String @id
   senha String
-  cpf BigInt
+  cpf String
   telefone String?
   email String?
   dt_nascimento String?

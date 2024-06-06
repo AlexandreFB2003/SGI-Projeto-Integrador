@@ -8,7 +8,7 @@
 <body>
 
     <div class="box">
-        <form action="http://localhost:3333/alunos" method="POST">
+        <form action="http://localhost:3000/professor" method="POST">
             <fieldset>
                 <legend><b>Cadastro</b></legend>
                 <br>
@@ -18,12 +18,17 @@
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="number" name="matricula_aluno" id="matricula" class="inputUser" required>
-                    <label for="matricula" class="labelInput">Matricula</label>
+                    <input type="text" name="codigo" id="codigo" class="inputUser" required>
+                    <label for="codigo" class="labelInput">Código do Professor</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="number" name="cpf" id="cpf" class="inputUser" required>
+                    <input type="text" name="senha" id="senha" class="inputUser" required>
+                    <label for="senha" class="labelInput">Senha</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="cpf" id="cpf" class="inputUser" required>
                     <label for="cpf" class="labelInput">CPF</label>
                 </div>
                 <br><br>
@@ -33,12 +38,12 @@
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="endereco" id="endereco" class="inputUser" required>
-                    <label for="endereco" class="labelInput">Endereço</label>
+                    <input type="email" name="email" id="email" class="inputUser" required>
+                    <label for="email" class="labelInput">E-mail</label>
                 </div>
                 <br><br>
                 <label for="data"><b>Data de Nascimento:</b></label>
-                <input type="date" name="data_nascimento" id="data" required>
+                <input type="date" name="dt_nascimento" id="data" required>
                 <br><br>
                 <input type="submit" name="submit" id="submit">
             </fieldset>
