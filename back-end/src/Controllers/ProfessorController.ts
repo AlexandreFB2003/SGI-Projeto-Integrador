@@ -8,7 +8,6 @@ import PrismaProfessorRepository from "../Repositories/prisma/PrismaProfessorRep
 const professorService = new ProfessorService(new PrismaProfessorRepository())
 
 
-
 class ProfessorController {
 
     constructor(){
