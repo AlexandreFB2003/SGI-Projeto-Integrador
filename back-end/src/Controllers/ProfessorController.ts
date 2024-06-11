@@ -1,10 +1,13 @@
 import { Request, Response } from "express";
+import path from 'path';
 
 import ProfessorService from "../Services/ProfessorService";
 import InMemoryProfessorRepository from "../Repositories/In-Memory/InMemoryProfessorRepository";
 import PrismaProfessorRepository from "../Repositories/prisma/PrismaProfessorRepository";
 
 const professorService = new ProfessorService(new PrismaProfessorRepository())
+
+
 
 class ProfessorController {
 
@@ -39,7 +42,8 @@ class ProfessorController {
 
             const professorCreatedData = await professorService.create(data)
 
-            Res.json(professorCreatedData)
+            /*Res.json(professorCreatedData)*/
+            Res.redirect("/professor/login")
 
         } catch (err: any) {
             Res.status(400).json({ error: err.message })
@@ -72,6 +76,12 @@ class ProfessorController {
             Res.status(400).json({ error: err.message })
         }
 
+    }
+
+    async getLoginPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'Usuarios', 'login.html'))
+    
     }
 
 }

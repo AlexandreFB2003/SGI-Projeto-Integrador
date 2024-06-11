@@ -1,7 +1,10 @@
 import express from 'express'
 import router from './src/routes'
+import path from 'path';
 
 const server = express()
+
+server.use(express.static(path.join(__dirname, '..', 'Usuarios')))
 
 server.use(express.json())
 
