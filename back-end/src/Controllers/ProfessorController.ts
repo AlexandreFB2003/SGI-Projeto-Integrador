@@ -114,6 +114,18 @@ class ProfessorController {
     
     }
 
+    async getEditarPerfilPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'Usuarios', 'editarPerfil.html'))
+    
+    }
+
+    async getPortuguesPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'professor', 'portugues.html'))
+    
+    }
+
 }
 
 export default ProfessorController
