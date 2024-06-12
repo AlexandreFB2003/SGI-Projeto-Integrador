@@ -8,6 +8,25 @@ body, html {
     overflow-x: hidden;
 }
 
+input {
+    border: none;
+    text-align: center;
+}
+
+input:focus {
+    border: none;
+}
+
+.botao {
+    border: none;
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 13px;
+
+}
+
+
+
 /* Navbar */
 .nav{
     background-color: #d8d8d8;
@@ -71,27 +90,34 @@ body, html {
 
 /* Titulo do boletim */
 .titulo {
-    margin-left: 11%;
     padding: 20px;
+    text-align: center;
 }
 
 
 /* Boletim */
+
+
+
 .grades-table {
-    width: 100%;
+    width: 80.5%;
     border-collapse: collapse;
+    margin-left: 15%;
+
 }
 
 .grades-table th, .grades-table td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 .grades-table th {
     background-color: #333;
     color: white;
 }
+
+
 
 
 /* Rodapé */
@@ -113,6 +139,10 @@ footer {
 @media (max-width: 769px) {
     body {
         overflow-x: auto;
+    }
+
+    .titulo {
+        text-align: left;
     }
 
     .sidebar {

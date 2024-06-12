@@ -37,10 +37,11 @@ body, html {
     margin-left: 27%;
     width: 50%;
     margin-top: 1%;
+    margin-bottom: 10%;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
     background-color: #87cefa;
     border-radius: 3%;
-    height: 435%;
+    height: auto;
 
 }
 
