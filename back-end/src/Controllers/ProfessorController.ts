@@ -39,16 +39,41 @@ class ProfessorController {
 
             delete data.submit
 
-            const professorCreatedData = await professorService.create(data)
+            await professorService.create(data)
 
-            /*Res.json(professorCreatedData)*/
             Res.redirect("/professor/login")
 
         } catch (err: any) {
             Res.status(400).json({ error: err.message })
         }
 
-        
+    }
+
+    async login(Req: Request, Res: Response) {
+
+        try {
+
+            const { codigo, password } = Req.body
+
+            if (!codigo || !password) {
+                throw new Error("Por favor, envie todos os dados obrigatórios")
+            }
+
+            const loginProfessor = await professorService.login(codigo, password)
+
+            if (loginProfessor) {
+
+                Res.redirect("/professor/boletim")
+
+            } else {
+
+                Res.json({error: "Código ou senha inválidos"})
+
+            }
+
+        } catch (err: any) {
+            Res.status(400).json({ error: err.message })
+        }
 
     }
 
@@ -80,6 +105,12 @@ class ProfessorController {
     async getLoginPage(Req: Request, Res: Response) {
 
         Res.sendFile(path.join(__dirname, '..', '..', '..', 'Usuarios', 'login.html'))
+    
+    }
+
+    async getBoletimPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'professor', 'lancarNota.html'))
     
     }
 

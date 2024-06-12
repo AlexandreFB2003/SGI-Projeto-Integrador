@@ -30,6 +30,14 @@ class ProfessorService {
 
     }
 
+    async login(codigo: string, password: string) {
+
+        const verificaLogin = await this._professorRepository.login(codigo, password)
+
+        return verificaLogin
+
+    }
+
     async update(id_professor: string, data: Professor): Promise<Professor> {
 
         const updatedProfessor = await this._professorRepository.update(id_professor, data)

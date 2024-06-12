@@ -16,17 +16,17 @@
         </div>
         <div class="login-container">
             <h1>Professor</h1>
-            <form>
+            <form action="http://localhost:3000/professor/login" method="POST">
                 <div class="input-container">
-                    <label for="username">Usuário</label>
-                    <input type="text" id="username" name="username">
+                    <label for="codigo">Código</label>
+                    <input type="text" id="codigo" name="codigo">
                 </div>
                 <div class="input-container">
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password">
                 </div>
                 <div class="button-container">
-                    <button type="submit">Acessar</button>
+                    <button type="submit" name="submit">Acessar</button>
                 </div>
                 <div class="forgot-password">
                     <a href="recuperarSenha.html">Esqueceu sua senha?</a>

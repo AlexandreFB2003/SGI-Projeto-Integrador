@@ -45,6 +45,13 @@ class InMemoryProfessorRepository implements ProfessorPrismaRepository{
 
     }
 
+    async login(codigo: string, senha: string) {
+
+        const professor = this.professores.find(prof => prof.codigo === codigo && prof.senha === senha);
+
+        return professor !== undefined;
+    }
+
     async update(cd_professor: string, data: Professor): Promise<Professor> {
 
         const index = this.professores.findIndex((item) => item.codigo === cd_professor)

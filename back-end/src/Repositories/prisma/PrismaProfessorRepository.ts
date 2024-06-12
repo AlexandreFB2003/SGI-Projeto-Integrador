@@ -33,6 +33,20 @@ class PrismaProfessorRepository {
 
     }
 
+    async login(codigo: string, senha: string): Promise<boolean> {
+
+        const professor = await prisma.professor.findFirst({
+            where: {
+
+                codigo: codigo,
+                senha: senha
+            }
+        });
+
+        return professor !== null;
+
+    }
+
     async update(codigo: string, data: Professor): Promise<Professor> {
 
         const updateProfessor = await prisma.professor.update({
