@@ -58,45 +58,65 @@
 
     <div>
         <h1 class="titulo">Boletim Escolar</h1>
-        <table class="grades-table">
-            <thead>
-                <tr>
-                    <th>Matéria</th>
-                    <th>Nota 1</th>
-                    <th>Nota 2</th>
-                    <th>Nota Final</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                    <td>Português</td>
-                    <td><input type="number" id="nota1-portugues" placeholder="Digite a Nota 1"></td>
-                    <td><input type="number" id="nota2-portugues" placeholder="Digite a Nota 2"></td>
-                    <td id="media-portugues">-</td>
-                    <td><button class="botao" onclick="calcularMedia('portugues')">Calcular Média</button></td>
-                </tr>
-                <tr>
-                    <td>Matemática</td>
-                    <td><input type="number" id="nota1-matematica" placeholder="Digite a Nota 1"></td>
-                    <td><input type="number" id="nota2-matematica" placeholder="Digite a Nota 2"></td>
-                    <td id="media-matematica">-</td>
-                    <td><button class="botao" onclick="calcularMedia('matematica')">Calcular Média</button></td>
-                </tr>
-                <tr>
-                    <td>Ciências</td>
-                    <td><input type="number" id="nota1-ciencias" placeholder="Digite a Nota 1"></td>
-                    <td><input type="number" id="nota2-ciencias" placeholder="Digite a Nota 2"></td>
-                    <td id="media-ciencias">-</td>
-                    <td><button class="botao" onclick="calcularMedia('ciencias')">Calcular Média</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <form>
+            <table class="grades-table">
+                <thead>
+                    <tr>
+                        <th>Matéria</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota Final</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alexandre Fonseca Borges</td>
+                        <td><input type="number" id="aluno1-1" placeholder="Digite a Nota 1"></td>
+                        <td><input type="number" id="aluno1-2" placeholder="Digite a Nota 2"></td>
+                        <td><p class="final" id="aluno1-final"></p></td>
+                        <td><button class="botao" onclick="calcularMedia(event, 'aluno1')">Calcular Média</button></td>
+                    </tr>
+                    <tr>
+                        <td>Marcos Vinícius</td>
+                        <td><input type="number" id="aluno2-1" placeholder="Digite a Nota 1"></td>
+                        <td><input type="number" id="aluno2-2" placeholder="Digite a Nota 2"></td>
+                        <td><p class="final" id="aluno2-final"></p></td>
+                        <td><button class="botao" onclick="calcularMedia(event, 'aluno2')">Calcular Média</button></td>
+                    </tr>
+                    <tr>
+                        <td>Victor Gabriel de Freitas Passos</td>
+                        <td><input type="number" id="aluno3-1" placeholder="Digite a Nota 1"></td>
+                        <td><input type="number" id="aluno3-2" placeholder="Digite a Nota 2"></td>
+                        <td><p class="final" id="aluno3-final"></p></td>
+                        <td><button class="botao" onclick="calcularMedia(event, 'aluno3')">Calcular Média</button></td>
+                    </tr>
+                 
+                </tbody>
+            </table>
+            <br>
+            <input type="submit" name="submit" id="submit">
+        </form>
     </div>
 
     <footer>
         <p>&copy; 2024 Link School. Todos os direitos reservados.</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function calcularMedia(event, idPrefix) 
+        {
+            event.preventDefault();
+
+            var nota1 = parseFloat(document.getElementById(idPrefix + "-1").value);
+            var nota2 = parseFloat(document.getElementById(idPrefix + "-2").value);
+
+            if (!isNaN(nota1) && !isNaN(nota2)) {
+                document.getElementById(idPrefix + "-final").innerText = (nota1 + nota2) / 2;
+            } else {
+                document.getElementById(idPrefix + "-final").innerText = "None";
+            }
+        }
+    </script>
 </body>
 </html>
