@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matéria de Português</title>
+    <title>Matéria de Inglês</title>
+    <link rel="stylesheet" href="materia.css">
     <link rel="stylesheet" href="/static/materia.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <div class="nav">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"> <!-- Adicionando a classe fixed-top -->
             <div class="container-fluid">
                 <a class="navbar-brand" href="#" style="font-size: 300%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" >LinkSchool</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -19,15 +20,17 @@
                     <span class="navbar-toggler-icon" ></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <!-- Conteúdo da barra de navegação -->
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/professor/boletim">Boletim</a>
+                            <a class="nav-link" aria-current="page" href="/professor/boletim">Boletim</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="/professor/portugues">Matéria</a>
+                            <a class="nav-link active" href="/professor/portugues" aria-disabled="true">Matéria</a>
                         </li>
                     </ul>
+                    <!-- Dropdown para o ícone de perfil -->
                     <div class="d-flex align-items-center gap-5">
                         <div class="dropdown">
                             <a class="bi bi-person-circle text-black fs-2 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" ></a>
@@ -48,19 +51,20 @@
             <h3>Matérias</h3>
         </div>
         <div class="sidebar-content">
-            <a href="/professor/portugues" class="active">Português</a>
+            <a href="/professor/portugues">Português</a>
             <a href="/professor/matematica">Matemática</a>
             <a href="/professor/ciencias">Ciências</a>
             <a href="/professor/historia">História</a>
             <a href="/professor/geografia">Geografia</a>
-            <a href="/professor/ingles">Inglês</a>
+            <a href="/professor/ingles" class="active">Inglês</a>
         </div>
     </div>
     <div class="content">
-        <h1>Português</h1>
-        <p>Bem-vindo à página da disciplina de Português. Aqui você encontrará recursos, tarefas e material de estudo para ajudar em seu aprendizado.</p>
+        <h1>Inglês</h1>
+        <p>Bem-vindo à página da disciplina de Inglês. Aqui você encontrará recursos, tarefas e material de estudo para ajudar em seu aprendizado.</p>
         <h2>Recursos Educacionais</h2>
         <ul id="itemList">
+            <!-- Itens adicionados aparecerão aqui -->
             <li class="add-item">
                 <button class="btn btn-primary" id="addItemButton"><i class="bi bi-plus"></i></button>
                 <form class="d-none" id="addItemForm">
@@ -77,9 +81,19 @@
             </li>
         </ul>
         <h2>Tarefas Recentes</h2>
-        <ul>
-            <li>Tarefa 1: Análise do poema "Canção do exílio"</li>
-            <li>Tarefa 2: Resumo de "Dom Casmurro" de Machado de Assis</li>
+        <ul id="taskList">
+            <li class="add-task">
+                <button class="btn btn-primary" id="addTaskButton"><i class="bi bi-plus"></i></button>
+                <form class="d-none" id="addTaskForm">
+                    <div class="mb-3">
+                        <label for="taskTitle" class="form-label">Título da Tarefa:</label>
+                        <input type="text" class="form-control" id="taskTitle" placeholder="Digite o título da tarefa">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </form>
+            </li>
+            <li>Tarefa 1: Prática de conversação em inglês</li>
+            <li>Tarefa 2: Exercícios de compreensão escrita</li>
         </ul>
     </div>
     <footer>
@@ -92,24 +106,62 @@
         });
 
         document.getElementById('addItemForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); 
+
 
             const title = document.getElementById('itemTitle').value;
             const link = document.getElementById('itemLink').value;
 
+
             const newItem = document.createElement('li');
-            newItem.innerHTML = `<a href="${link}" target="_blank">${title} <button class="btn btn-danger" style="margin-left= 20%"><i class="bi bi-trash"></i> </button></a>`;
+            newItem.innerHTML = `<a href="${link}" target="_blank">${title}</a> <button class="btn btn-danger btn-sm ms-2 remove-btn1"><i class="bi bi-trash"></i></button>`;
             
+            // Adiciona o novo item à lista
             document.getElementById('itemList').appendChild(newItem);
+
 
             document.getElementById('itemTitle').value = '';
             document.getElementById('itemLink').value = '';
 
             document.getElementById('addItemForm').classList.add('d-none');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('remove-btn1')) {
+                e.target.closest('li').remove();
+            }
+        });
+
+
+        document.getElementById('addTaskButton').addEventListener('click', function() {
+            document.getElementById('addTaskForm').classList.toggle('d-none');
+        });
+
+        document.getElementById('addTaskForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+       
+            const taskTitle = document.getElementById('taskTitle').value;
+
+
+            const newTask = document.createElement('li');
+            newTask.innerHTML = `${taskTitle} <button class="btn btn-danger btn-sm ms-2 remove-btn"><i class="bi bi-trash"></i></button>`;
             
-            function removeItem(element) {
-            element.parentNode.remove(newItem);
-        }
+
+            document.getElementById('taskList').appendChild(newTask);
+
+
+            document.getElementById('taskTitle').value = '';
+
+
+            document.getElementById('addTaskForm').classList.add('d-none');
+        });
+
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('remove-btn')) {
+                e.target.closest('li').remove();
+            }
         });
     </script>
 </body>

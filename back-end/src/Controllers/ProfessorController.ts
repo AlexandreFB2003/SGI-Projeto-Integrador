@@ -126,6 +126,36 @@ class ProfessorController {
     
     }
 
+    async getCienciasPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'professor', 'ciencias.html'))
+    
+    }
+
+    async getGeografiaPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'professor', 'geografia.html'))
+    
+    }
+
+    async getHistoriaPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'professor', 'historia.html'))
+    
+    }
+
+    async getInglesPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'professor', 'ingles.html'))
+    
+    }
+
+    async getMatematicaPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'professor', 'matematica.html'))
+    
+    }
+
 }
 
 export default ProfessorController
