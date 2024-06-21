@@ -92,6 +92,8 @@ class ProfessorController {
                 throw new Error("Por favor, envie o id")
             }
 
+            delete data.submit
+
             const updatedProfessor = await professorService.update(id_professor, data)
 
             return Res.json(updatedProfessor)
@@ -153,6 +155,18 @@ class ProfessorController {
     async getMatematicaPage(Req: Request, Res: Response) {
 
         Res.sendFile(path.join(__dirname, '..', '..', '..', 'professor', 'matematica.html'))
+    
+    }
+
+    async getEsquecerSenhaPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'Usuarios', 'recuperarSenha.html'))
+    
+    }
+
+    async getCadastroPage(Req: Request, Res: Response) {
+
+        Res.sendFile(path.join(__dirname, '..', '..', '..', 'Usuarios', 'cadastro.html'))
     
     }
 
