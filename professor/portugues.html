@@ -77,7 +77,17 @@
             </li>
         </ul>
         <h2>Tarefas Recentes</h2>
-        <ul>
+        <ul id="taskList">
+            <li class="add-task">
+                <button class="btn btn-primary" id="addTaskButton"><i class="bi bi-plus"></i></button>
+                <form class="d-none" id="addTaskForm">
+                    <div class="mb-3">
+                        <label for="taskTitle" class="form-label">Título da Tarefa:</label>
+                        <input type="text" class="form-control" id="taskTitle" placeholder="Digite o título da tarefa">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </form>
+            </li>
             <li>Tarefa 1: Análise do poema "Canção do exílio"</li>
             <li>Tarefa 2: Resumo de "Dom Casmurro" de Machado de Assis</li>
         </ul>
@@ -92,24 +102,62 @@
         });
 
         document.getElementById('addItemForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); 
+
 
             const title = document.getElementById('itemTitle').value;
             const link = document.getElementById('itemLink').value;
 
+
             const newItem = document.createElement('li');
-            newItem.innerHTML = `<a href="${link}" target="_blank">${title} <button class="btn btn-danger" style="margin-left= 20%"><i class="bi bi-trash"></i> </button></a>`;
+            newItem.innerHTML = `<a href="${link}" target="_blank">${title}</a> <button class="btn btn-danger btn-sm ms-2 remove-btn1"><i class="bi bi-trash"></i></button>`;
             
+            // Adiciona o novo item à lista
             document.getElementById('itemList').appendChild(newItem);
+
 
             document.getElementById('itemTitle').value = '';
             document.getElementById('itemLink').value = '';
 
             document.getElementById('addItemForm').classList.add('d-none');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('remove-btn1')) {
+                e.target.closest('li').remove();
+            }
+        });
+
+
+        document.getElementById('addTaskButton').addEventListener('click', function() {
+            document.getElementById('addTaskForm').classList.toggle('d-none');
+        });
+
+        document.getElementById('addTaskForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+       
+            const taskTitle = document.getElementById('taskTitle').value;
+
+
+            const newTask = document.createElement('li');
+            newTask.innerHTML = `${taskTitle} <button class="btn btn-danger btn-sm ms-2 remove-btn"><i class="bi bi-trash"></i></button>`;
             
-            function removeItem(element) {
-            element.parentNode.remove(newItem);
-        }
+
+            document.getElementById('taskList').appendChild(newTask);
+
+
+            document.getElementById('taskTitle').value = '';
+
+
+            document.getElementById('addTaskForm').classList.add('d-none');
+        });
+
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('remove-btn')) {
+                e.target.closest('li').remove();
+            }
         });
     </script>
 </body>
